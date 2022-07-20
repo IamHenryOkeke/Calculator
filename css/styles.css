@@ -58,10 +58,6 @@ h1{
     transition: .4s;
 }
 
-.span{
-    grid-column: span 2;
-}
-
 #operator{
     background-color: orchid;
     color: white;
@@ -71,3 +67,32 @@ h1{
 #equals{
     background-color: green;
 }
+
+
+#para{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: goldenrod;
+}
+
+a:hover{
+    color: white;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:50px;   /* Height of the footer */
+    background-color: #999;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: white;
+ }
