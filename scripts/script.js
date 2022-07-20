@@ -1,13 +1,67 @@
-const display = document.getElementById("display")
-const buttons = document.querySelectorAll('button');
+// Get needed variables
+let display = document.getElementById("display")
 
-// buttons.forEach(button => {
-//     // and for each one we add a 'click' listener
-//     button.addEventListener('click', () => {
-//         display.textContent = button.value;
-//     });
-// });
+let buttons = Array.from(document.getElementsByClassName("buttons"))
 
+let firstNumber;
+
+let secondNumber;
+
+let operator;
+
+buttons.map( button => {
+    button.addEventListener("click", function(e){
+        if ((e.target.innerText === 'AC')){
+            display.innerText = ""
+        }
+        else if (e.target.innerText === "Del"){
+            if(display.innerText){
+                display.innerText = display.innerText.slice(0, -1)
+            }
+        }
+        else{
+            if (e.target.innerText === "="){
+                let splitNum;
+                let result;
+                let expression = display.innerText
+                if (expression.includes("+")){
+                    splitNum = expression.split("+");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "+"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+                else if (expression.includes("-")){
+                    splitNum = expression.split("-");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "-"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+                else if (expression.includes("/")){
+                    splitNum = expression.split("/");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "/"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+                else if (expression.includes("*")){
+                    splitNum = expression.split("*");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "*"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+            }else{
+                display.innerText += e.target.innerText;
+            }
+        }
+    })
+})
 
 function addNumber(num1, num2){
     return num1 + num2;
@@ -23,30 +77,23 @@ function multiplyNumber(num1, num2){
 
 function divideNumber(num1, num2){
     if (num2 === 0){
-        return "Can't divide by Zero"
+        return "Math Error. Can't divide by Zero"
     }
     else{
         return num1 / num2;
     }
 }
 
-function operate(){
-    let firstNumber = parseInt(prompt("Enter a number: "))
-    let secondNumber = parseInt(prompt("Enter another number: "))
-    let operator = prompt("Enter an operator: ")
+function operate(num1, num2, operator){
     switch (operator) {
         case "+":
-            addNumber(firstNumber, secondNumber);
-            break;
-        case "+":
-            subtractNumber(firstNumber, secondNumber);
-            break;
+            return addNumber(num1, num2);
+        case "-":
+            return subtractNumber(num1, num2);
         case "/":
-            divideNumber(firstNumber, secondNumber);
-            break;
+            return divideNumber(num1, num2);
         case "*":
-            multiplyNumber(firstNumber, secondNumber);
-            break;
+            return multiplyNumber(num1, num2);
         default:
             text = "No value found";
     }
