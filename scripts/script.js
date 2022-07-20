@@ -48,11 +48,27 @@ buttons.map( button => {
                     result = operate(firstNumber,secondNumber,operator)
                     display.innerText = result
                 }
-                else if (expression.includes("*")){
-                    splitNum = expression.split("*");
+                else if (expression.includes("x")){
+                    splitNum = expression.split("x");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
-                    operator = "*"
+                    operator = "x"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+                else if (expression.includes("!")){
+                    splitNum = expression.split("!");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "!"
+                    result = operate(firstNumber,secondNumber,operator)
+                    display.innerText = result
+                }
+                else if (expression.includes("^")){
+                    splitNum = expression.split("^");
+                    firstNumber = parseFloat(splitNum[0])
+                    secondNumber = parseFloat(splitNum[1])
+                    operator = "^"
                     result = operate(firstNumber,secondNumber,operator)
                     display.innerText = result
                 }
@@ -84,6 +100,23 @@ function divideNumber(num1, num2){
     }
 }
 
+function power(a, b) {
+	return a**b
+};
+
+function factorial(number) {
+	if (number === 0 || number === 1){
+    return 1;
+  }
+  else{
+    let factorial = 1;
+    for(let i = 1;i < (number + 1);i++){
+      factorial *= i;
+    }
+    return factorial;
+  }
+};
+
 function operate(num1, num2, operator){
     switch (operator) {
         case "+":
@@ -92,8 +125,12 @@ function operate(num1, num2, operator){
             return subtractNumber(num1, num2);
         case "/":
             return divideNumber(num1, num2);
-        case "*":
+        case "x":
             return multiplyNumber(num1, num2);
+        case "!":
+            return factorial(num1);
+        case "^":
+            return power(num1, num2);
         default:
             text = "No value found";
     }
