@@ -6,27 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <title>Calculator</title>
+    <!-- link to google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
-    <h1>Calculator</h1>
-    <div id="display"></div>
-    <button id="clear">Clear</button>
-    <button id = "data-number" value="1">1</button>
-    <button id = "data-number" value="2">2</button>
-    <button id = "data-number" value="3">3</button>
-    <button data-operation>*</button>
-    <button id = "data-number" value="4">4</button>
-    <button id = "data-number" value="5">5</button>
-    <button id = "data-number" value="6">6</button>
-    <button data-operation>+</button>
-    <button id = "data-number" value="7">7</button>
-    <button id = "data-number" value="8">8</button>
-    <button id = "data-number" value="9">9</button>
-    <button data-operation>-</button>
-    <button id = "data-number" value=".">.</button>
-    <button id = "data-number" value="0">0</button>
-    <button data-operation>/</button>
-    <button data-equals class="span-two">=</button>
+    <div>
+        <h1 class="heading">Calculator</h1>
+    </div>
+    <div class="calculator-container">
+        <div id="display">
+        </div>
+        <div class="buttons">
+            <div class="button">AC</div>
+            <div class="button">Del</div>
+            <div class="button">.</div>
+            <div class="button" id="operator">*</div>
+            <div class="button">9</div>
+            <div class="button">8</div>
+            <div class="button">7</div>
+            <div class="button" id="operator">-</div>
+            <div class="button">6</div>
+            <div class="button">5</div>
+            <div class="button">4</div>
+            <div class="button" id="operator">+</div>
+            <div class="button">3</div>
+            <div class="button">2</div>
+            <div class="button">1</div>
+            <div class="button" id="operator">/</div>
+            <div class="button span">0</div>
+            <div id="equals" class="button span">=</div>
+        </div>
+    </div>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
