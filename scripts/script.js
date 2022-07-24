@@ -9,15 +9,13 @@ let secondNumber;
 
 let operator;
 
-buttons.map( button => {
+buttons.map(button => {
     button.addEventListener("click", function(e){
         if ((e.target.innerText === 'AC')){
-            display.innerText = ""
+            display.innerText = "0"
         }
         else if (e.target.innerText === "Del"){
-            if(display.innerText){
                 display.innerText = display.innerText.slice(0, -1)
-            }
         }
         else{
             if (e.target.innerText === "="){
@@ -73,11 +71,80 @@ buttons.map( button => {
                     display.innerText = result
                 }
             }else{
-                display.innerText += e.target.innerText;
+                if (display.innerText === "0"){
+                    display.innerText = e.target.innerText
+                }else{
+                    display.innerText += e.target.innerText;
+                }
             }
         }
     })
 })
+
+// document.addEventListener('keydown', function(event){
+//     if(event.which === 8){
+//         display.innerText = display.innerText.slice(0, -1)
+//     }
+//     else{
+//         if((event.which <= 57  && event.which >= 48) || (106 <= event.which <= 111)){
+//             display.innerText += event.key;
+//         }
+//         if(event.which === 13){
+//             let splitNum;
+//                 let result;
+//                 let expression = display.innerText
+//                 if (expression.includes("+")){
+//                     splitNum = expression.split("+");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "+"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("-")){
+//                     splitNum = expression.split("-");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "-"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("/")){
+//                     splitNum = expression.split("/");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "/"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("x")){
+//                     splitNum = expression.split("x");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "x"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("!")){
+//                     splitNum = expression.split("!");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "!"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("^")){
+//                     splitNum = expression.split("^");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "^"
+//                     result = operate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+        
+//                 }
+//         }
+//     }
+// });
 
 function addNumber(num1, num2){
     return num1 + num2;
