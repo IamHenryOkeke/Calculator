@@ -155,7 +155,7 @@ function calculate(num1, num2, operator){
             if (isNaN(power(num1, num2)) === true){
                 return "Math error"
             }else{
-                return addNumber(num1, num2);
+                return power(num1, num2);
             }
         default:
             text = "No value found";
