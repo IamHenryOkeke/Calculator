@@ -24,23 +24,23 @@
         <div class="buttons">
             <div class="button">AC</div>
             <div class="button">Del</div>
-            <div class="button" style="font-size: 2rem; text-align: center;">.</div>
-            <div class="button" id="operator">x</div>
-            <div class="button">9</div>
-            <div class="button">8</div>
-            <div class="button">7</div>
-            <div class="button" id="operator">-</div>
-            <div class="button">6</div>
-            <div class="button">5</div>
-            <div class="button">4</div>
-            <div class="button" id="operator">+</div>
-            <div class="button">3</div>
-            <div class="button">2</div>
-            <div class="button">1</div>
-            <div class="button" id="operator">/</div>
-            <div class="button">0</div>
-            <div class="button" id="operator">!</div>
-            <div class="button" id="operator">^</div>
+            <div class="button" style="font-size: 2rem; text-align: center;" data-type="number">.</div>
+            <div class="button" id="operator" data-type="operator">x</div>
+            <div class="button" data-type="number">9</div>
+            <div class="button" data-type="number">8</div>
+            <div class="button" data-type="number">7</div>
+            <div class="button" id="operator" data-type="operator">-</div>
+            <div class="button" data-type="number">6</div>
+            <div class="button" data-type="number">5</div>
+            <div class="button" data-type="number">4</div>
+            <div class="button" id="operator" data-type="operator">+</div>
+            <div class="button" data-type="number">3</div>
+            <div class="button" data-type="number">2</div>
+            <div class="button" data-type="number">1</div>
+            <div class="button" id="operator" data-type="operator">/</div>
+            <div class="button" id="operator" data-type="operator">!</div>
+            <div class="button" data-type="number">0</div>
+            <div class="button" id="operator" data-type="operator">^</div>
             <div id="equals" class="button">=</div>
         </div>
     </div>
@@ -49,10 +49,11 @@
         <a href="http://www.theodinproject.com" target="_blank">
             The Odin Project.
         </a>
+        <br> It takes two expression and returns a result. 
     </p>
     <footer>Copyright &copy; 2022  
         <i class="fa fa-github" style="font-size:24px"></i>
-        <a href="http://" target="_blank">Henry Nmesomachukwu</a></footer>
+        <a href="https://github.com/IamHenryOkeke/Calculator" target="_blank">Henry Nmesomachukwu</a></footer>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
