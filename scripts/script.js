@@ -3,6 +3,8 @@ let display = document.getElementById("display")
 
 let buttons = Array.from(document.getElementsByClassName("buttons"))
 
+// const { previousKeyType } = calculator-container.dataset
+
 let firstNumber;
 
 let secondNumber;
@@ -15,7 +17,10 @@ buttons.map(button => {
             display.innerText = "0"
         }
         else if (e.target.innerText === "Del"){
-                display.innerText = display.innerText.slice(0, -1)
+            display.innerText = display.innerText.slice(0, -1);
+            if (display.innerText.length === 0){
+                display.innerText = "0"
+            }
         }
         else{
             if (e.target.innerText === "="){
@@ -27,48 +32,42 @@ buttons.map(button => {
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "+"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
                 else if (expression.includes("-")){
                     splitNum = expression.split("-");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "-"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
                 else if (expression.includes("/")){
                     splitNum = expression.split("/");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "/"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
                 else if (expression.includes("x")){
                     splitNum = expression.split("x");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "x"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
                 else if (expression.includes("!")){
                     splitNum = expression.split("!");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "!"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
                 else if (expression.includes("^")){
                     splitNum = expression.split("^");
                     firstNumber = parseFloat(splitNum[0])
                     secondNumber = parseFloat(splitNum[1])
                     operator = "^"
-                    result = operate(firstNumber,secondNumber,operator)
-                    display.innerText = result
+                    display.innerText = calculate(firstNumber,secondNumber,operator)
                 }
             }else{
                 if (display.innerText === "0"){
@@ -80,71 +79,6 @@ buttons.map(button => {
         }
     })
 })
-
-// document.addEventListener('keydown', function(event){
-//     if(event.which === 8){
-//         display.innerText = display.innerText.slice(0, -1)
-//     }
-//     else{
-//         if((event.which <= 57  && event.which >= 48) || (106 <= event.which <= 111)){
-//             display.innerText += event.key;
-//         }
-//         if(event.which === 13){
-//             let splitNum;
-//                 let result;
-//                 let expression = display.innerText
-//                 if (expression.includes("+")){
-//                     splitNum = expression.split("+");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "+"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-//                 }
-//                 else if (expression.includes("-")){
-//                     splitNum = expression.split("-");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "-"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-//                 }
-//                 else if (expression.includes("/")){
-//                     splitNum = expression.split("/");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "/"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-//                 }
-//                 else if (expression.includes("x")){
-//                     splitNum = expression.split("x");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "x"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-//                 }
-//                 else if (expression.includes("!")){
-//                     splitNum = expression.split("!");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "!"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-//                 }
-//                 else if (expression.includes("^")){
-//                     splitNum = expression.split("^");
-//                     firstNumber = parseFloat(splitNum[0])
-//                     secondNumber = parseFloat(splitNum[1])
-//                     operator = "^"
-//                     result = operate(firstNumber,secondNumber,operator)
-//                     display.innerText = result
-        
-//                 }
-//         }
-//     }
-// });
 
 function addNumber(num1, num2){
     return num1 + num2;
@@ -184,21 +118,111 @@ function factorial(number) {
   }
 };
 
-function operate(num1, num2, operator){
+function calculate(num1, num2, operator){
     switch (operator) {
         case "+":
-            return addNumber(num1, num2);
+            if (isNaN(addNumber(num1, num2)) === true){
+                return "Math error"
+            }else{
+                return addNumber(num1, num2);
+            }
+            
         case "-":
-            return subtractNumber(num1, num2);
+            if (isNaN(subtractNumber(num1, num2)) === true){
+                return "Math error"
+            }else{
+                return subtractNumber(num1, num2);
+            }
         case "/":
-            return divideNumber(num1, num2);
+            if (isNaN(divideNumber(num1, num2)) === true){
+                return "Math error"
+            }else{
+                return divideNumber(num1, num2);
+            }
         case "x":
-            return multiplyNumber(num1, num2);
+            if (isNaN(multiplyNumber(num1, num2)) === true){
+                return "Math error"
+            }else{
+                return multiplyNumber(num1, num2);
+            }
         case "!":
-            return factorial(num1);
+            if (isNaN(factorial(num1)) === true){
+                return "Math error"
+            }else{
+                return factorial(num1);
+            }
         case "^":
-            return power(num1, num2);
+            if (isNaN(power(num1, num2)) === true){
+                return "Math error"
+            }else{
+                return addNumber(num1, num2);
+            }
         default:
             text = "No value found";
     }
 }
+
+// document.addEventListener('keydown', function(event){
+//     if(event.which === 8){
+//         display.innerText = display.innerText.slice(0, -1)
+//     }
+//     else{
+//         if((event.which <= 57  && event.which >= 48) || (106 <= event.which <= 111)){
+//             display.innerText += event.key;
+//         }
+//         if(event.which === 13){
+//             let splitNum;
+//                 let result;
+//                 let expression = display.innerText
+//                 if (expression.includes("+")){
+//                     splitNum = expression.split("+");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "+"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("-")){
+//                     splitNum = expression.split("-");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "-"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("/")){
+//                     splitNum = expression.split("/");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "/"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("x")){
+//                     splitNum = expression.split("x");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "x"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("!")){
+//                     splitNum = expression.split("!");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "!"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+//                 }
+//                 else if (expression.includes("^")){
+//                     splitNum = expression.split("^");
+//                     firstNumber = parseFloat(splitNum[0])
+//                     secondNumber = parseFloat(splitNum[1])
+//                     operator = "^"
+//                     result = calculate(firstNumber,secondNumber,operator)
+//                     display.innerText = result
+        
+//                 }
+//         }
+//     }
+// });
